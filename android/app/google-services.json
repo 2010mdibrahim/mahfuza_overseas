@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "125289527484",
+    "project_id": "mahmuza-863fc",
+    "storage_bucket": "mahmuza-863fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125289527484:android:33c01a84010c421b14b8b9",
+        "android_client_info": {
+          "package_name": "com.example.mahfuza_overseas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6Cw2J4axSW3SoFv21BHTT6Y-eCgZl7c0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
