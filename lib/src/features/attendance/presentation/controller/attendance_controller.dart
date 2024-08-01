@@ -53,7 +53,7 @@ class EmployeeAttendanceController extends GetxController {
     try {
       EmployeeAttendancePassUseCase employeeAttendancePassUseCase =
       EmployeeAttendancePassUseCase(locator<EmployeeAttendanceRepository>());
-      var response = await employeeAttendancePassUseCase(employeeId: "00017", year: isNotSameWithPresentYear == false ? selectedDate.value.year.toString() : DateTime.now().year.toString());
+      var response = await employeeAttendancePassUseCase(employeeId: session.getCandidateId.toString(), year: isNotSameWithPresentYear == false ? selectedDate.value.year.toString() : DateTime.now().year.toString());
       employeeAttendanceModel.value = response!.data!;
       if(isNotSameWithPresentYear == false){
         attendanceYear.value = selectedDate.value.year.toString();
