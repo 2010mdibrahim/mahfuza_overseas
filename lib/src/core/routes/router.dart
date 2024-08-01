@@ -4,6 +4,7 @@ import 'package:mahfuza_overseas/src/features/candidate_service_info/ui/presenta
 import 'package:mahfuza_overseas/src/features/contact_page/contact_page.dart';
 import 'package:mahfuza_overseas/src/features/notification/ui/presentation/notification_screen.dart';
 
+import '../../features/attendance/presentation/view/attendance_screen.dart';
 import '../../features/candidate_service_info/ui/presentation/services_screen.dart';
 import '../../features/dashboard_screen/dashboard_screen.dart';
 import '../../features/login_screen/ui/presentation/login_screen.dart';
@@ -87,6 +88,10 @@ class RouteGenerator {
         case Routes.notificationPage:
         return MaterialPageRoute(
           builder: (context) =>  NotificationScreen(),
+        );
+        case Routes.attendance:
+        return MaterialPageRoute(
+          builder: (context) =>  AttendanceScreen(),
         );
       }
     return null;

@@ -6,5 +6,6 @@ class Routes {
   static const servicesScreen = "/servicesScreen";
   static const passportRenew = "/passportRenew";
   static const notificationPage = "/notificationPage";
+  static const attendance = "/attendance";
 
 }

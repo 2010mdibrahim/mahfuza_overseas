@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../../../core/di/app_component.dart';
 import '../../../../core/source/dio_client.dart';
+import '../../../login_screen/data/model/login_model.dart';
 import '../../data/model/passport_process_model.dart';
 import '../../domain/repository/passport_process_repository.dart';
 import '../../domain/usecase/passport_process_pass_usecase.dart';
@@ -16,46 +17,51 @@ class PassportProcessStepController extends GetxController {
   List<ProcessList> processList = [
     // Add your process list here
   ];
-
+  var userModel = LoginModel();
   List<ProcessRecord> recordList = [
     // Add your record list here
   ];
   var currentStep = 0.obs;
   var loading = false.obs;
-  @override
-  void onInit() {
-    passportProcessStepFunction();
-    super.onInit();
-  }
+  // @override
+  // void onInit() {
+  //   if(userModel.type != "employee"){
+  //   passportProcessStepFunction();
+  //   }
+  //   super.onInit();
+  // }
 
   void passportProcessStepFunction() async {
     loading.value = true;
     update();
-    try {
-      PassportPassUseCase passportPassUseCase =
-          PassportPassUseCase(locator<PassportRepository>());
-      var response = await passportPassUseCase();
-      passportProcessStepsList.value = response!.data!;
-      for(var i in passportProcessStepsList.value.processList!){
-        var record = passportProcessStepsList.value.processRecord!.firstWhere((r) => r.stepId == i.id, orElse: () => passportProcessStepsList.value.processRecord![0]);
-        if (record.stepId == i.id) {
-          if (!steps.any((step) => step.id == i.id)) {
-            steps.add(Step(i.id, i.processName, record));
-          }
-        } else {
-          if (!steps.any((step) => step.id == i.id)) {
-            steps.add(Step(i.id, i.processName, null));
+    if(userModel.type != "employee"){
+      try {
+        PassportPassUseCase passportPassUseCase =
+        PassportPassUseCase(locator<PassportRepository>());
+        var response = await passportPassUseCase();
+        passportProcessStepsList.value = response!.data!;
+        for(var i in passportProcessStepsList.value.processList!){
+          var record = passportProcessStepsList.value.processRecord!.firstWhere((r) => r.stepId == i.id, orElse: () => passportProcessStepsList.value.processRecord![0]);
+          if (record.stepId == i.id) {
+            if (!steps.any((step) => step.id == i.id)) {
+              steps.add(Step(i.id, i.processName, record));
+            }
+          } else {
+            if (!steps.any((step) => step.id == i.id)) {
+              steps.add(Step(i.id, i.processName, null));
+            }
           }
         }
-      }
 
-    } on PlatformException catch (e) {
-      String platformVersion = '${e.message}';
-      print(platformVersion);
-    } finally {
-      loading.value = false;
-      update();
+      } on PlatformException catch (e) {
+        String platformVersion = '${e.message}';
+        print(platformVersion);
+      } finally {
+        loading.value = false;
+        update();
+      }
     }
+
     update();
   }
 

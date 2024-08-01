@@ -6,6 +6,10 @@ import 'package:mahfuza_overseas/src/features/dashboard_screen/dashboard_control
 import 'package:mahfuza_overseas/src/features/passport_process_steps/ui/controller/passport_process_step_controller.dart';
 import 'package:mahfuza_overseas/src/features/splash_screen/splash_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../features/attendance/data/repository/employee_attendance_repository_impl.dart';
+import '../../features/attendance/data/source/employee_attendance_service.dart';
+import '../../features/attendance/domain/repository/employee_attendance_repository.dart';
+import '../../features/attendance/presentation/controller/attendance_controller.dart';
 import '../../features/candidate_service_info/data/repository/candidate_service_info_repository_impl.dart';
 import '../../features/candidate_service_info/data/source/candidate_service_info_service.dart';
 import '../../features/candidate_service_info/domain/repository/candidate_service_info_repository.dart';
@@ -74,6 +78,11 @@ Future<void> init() async {
   locator.registerFactory<NotificationService>(() => NotificationService());
   locator.registerFactory<NotificationRepository>(
       () => NotificationRepositoryImpl(locator<NotificationService>()));
+  //attendance
+  locator.registerFactory<EmployeeAttendanceController>(() => Get.put(EmployeeAttendanceController()));
+  locator.registerFactory<EmployeeAttendanceService>(() => EmployeeAttendanceService());
+  locator.registerFactory<EmployeeAttendanceRepository>(
+      () => EmployeeAttendanceRepositoryImpl(locator<EmployeeAttendanceService>()));
 
 //splash screen controller
   locator.registerFactory<SplashScreenController>(() => Get.put(SplashScreenController()));

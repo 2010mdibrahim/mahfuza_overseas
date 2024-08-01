@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
                     child: Container(
                       color: Colors.transparent,
                       height: MediaQuery.of(context).size.height,
-                      child: Column(
+                      child:  Column(
                         children: [
                           20.ph,
                           Align(

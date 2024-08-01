@@ -6,13 +6,20 @@ import '../../features/login_screen/data/model/login_model.dart';
 import '../utilities/constants.dart';
 
 class SessionManager {
-  Future<bool> createSession(Candidate? loginModelData) async {
+  Future<bool> createSession(LoginModel? loginModelData, { String? phoneNumber,  String? password}) async {
     try {
-      setFullName = loginModelData?.fullName;
-      setPassword = loginModelData?.password;
-      setPhoneNumber = loginModelData?.phoneNumber;
-      setPhoto = loginModelData?.candidatePhoto;
-      print(loginModelData?.id);
+      if(loginModelData?.type == "employee"){
+        setFullName = loginModelData?.candidate?.fullName;
+        setPassword = password;
+        setPhoneNumber = phoneNumber;
+        setPhoto = loginModelData?.candidate?.avaterPhoto;
+      }else{
+        setFullName = loginModelData?.candidate?.fullName;
+        setPassword = password;
+        setPhoneNumber = phoneNumber;
+        setPhoto = loginModelData?.candidate?.candidatePhoto;
+      }
+      print(loginModelData?.candidate?.id);
       return true;
     } catch (e) {
       return false;
