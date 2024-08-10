@@ -22,7 +22,7 @@ class LoginController extends GetxController{
   var errorMessage = ''.obs;
   var isLoading = false.obs;
   var splashController = locator<DashboardController>();
-  var employeeAttendanceController = locator<EmployeeAttendanceController>();
+  // var employeeAttendanceController = locator<EmployeeAttendanceController>();
   passwordVisibilityFun(){
     passwordVisibility.value = !passwordVisibility.value;
     print(passwordVisibility.value);
@@ -51,8 +51,8 @@ class LoginController extends GetxController{
         splashController.userInformation.value = response?.data ?? LoginModel();
         session.createSession(response?.data, phoneNumber: emailTextFieldController.text, password: passwordTextFieldController.text);
         session.setBaseUrl = response?.data?.baseUrl;
-        session.setCandidateId = response?.data?.candidate?.id;
-        employeeAttendanceController.employeeAttendanceFunction();
+        session.setCandidateId = response?.data?.candidate?.employeeId;
+        // employeeAttendanceController.employeeAttendanceFunction();
         RouteGenerator.pushNamedAndRemoveAll(context, Routes.dashboard);
         if (!context.mounted) return;
         successToast(context: context,  msg: response?.data?.message ?? '');

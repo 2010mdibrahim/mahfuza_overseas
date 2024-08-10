@@ -12,7 +12,7 @@ import '../login_screen/domain/usecase/login_with_id_pass_usecase.dart';
 class DashboardController extends GetxController {
   var userInformation = LoginModel().obs;
   var loading = false.obs;
-  var employeeAttendanceController = locator<EmployeeAttendanceController>();
+  // var employeeAttendanceController = locator<EmployeeAttendanceController>();
   @override
   void onInit() {
     userInformationFu();
@@ -35,8 +35,8 @@ class DashboardController extends GetxController {
 
         session.createSession(response?.data);
         session.setBaseUrl = response?.data?.baseUrl;
-        session.setCandidateId = response?.data?.candidate?.id;
-        employeeAttendanceController.employeeAttendanceFunction();
+        session.setCandidateId = response?.data?.candidate?.employeeId;
+        // employeeAttendanceController.employeeAttendanceFunction();
       }
     } on PlatformException catch (e) {
       String platformVersion = '${e.message}';

@@ -292,7 +292,7 @@ Widget AttendanceCalenderWidget(
                                                 children: <TextSpan>[
                                                   TextSpan(
                                                       text:
-                                                          '${attendenceResponseModel.totalNumberOfPresent}',
+                                                      attendenceResponseModel.totalNumberOfPresent == null ? "0" :'${attendenceResponseModel.totalNumberOfPresent}',
                                                       style: TextStyle(
                                                           fontWeight:
                                                               FontWeight.bold)),
@@ -310,7 +310,7 @@ Widget AttendanceCalenderWidget(
                                                 children: <TextSpan>[
                                                   TextSpan(
                                                       text:
-                                                          '${attendenceResponseModel.totalNumberOfAbsent}',
+                                                      attendenceResponseModel.totalNumberOfAbsent == null ? "0" : '${attendenceResponseModel.totalNumberOfAbsent}',
                                                       style: TextStyle(
                                                           fontWeight:
                                                               FontWeight.bold)),
@@ -333,7 +333,7 @@ Widget AttendanceCalenderWidget(
                                                 children: <TextSpan>[
                                                   TextSpan(
                                                       text:
-                                                          '${attendenceResponseModel.totalNumberOfHolyday}',
+                                                      attendenceResponseModel.totalNumberOfHolyday == null ? "0" : '${attendenceResponseModel.totalNumberOfHolyday}',
                                                       style: TextStyle(
                                                           fontWeight:
                                                               FontWeight.bold)),
@@ -351,7 +351,7 @@ Widget AttendanceCalenderWidget(
                                                 children: <TextSpan>[
                                                   TextSpan(
                                                       text:
-                                                          '${attendenceResponseModel.totalNumberOfWeekend}',
+                                                      attendenceResponseModel.totalNumberOfWeekend == null ? "0" :'${attendenceResponseModel.totalNumberOfWeekend}',
                                                       style: TextStyle(
                                                           fontWeight:
                                                               FontWeight.bold)),
@@ -374,7 +374,7 @@ Widget AttendanceCalenderWidget(
                                                 children: <TextSpan>[
                                                   TextSpan(
                                                       text:
-                                                          '${attendenceResponseModel.totalNumberOfLeave}',
+                                                      attendenceResponseModel.totalNumberOfLeave == null ? "0" : '${attendenceResponseModel.totalNumberOfLeave}',
                                                       style: TextStyle(
                                                           fontWeight:
                                                               FontWeight.bold)),
@@ -392,7 +392,7 @@ Widget AttendanceCalenderWidget(
                                                 children: <TextSpan>[
                                                   TextSpan(
                                                       text:
-                                                          '${attendenceResponseModel.totalNumberOfDays}',
+                                                      attendenceResponseModel.totalNumberOfDays == null ? "0" :'${attendenceResponseModel.totalNumberOfDays}',
                                                       style: TextStyle(
                                                           fontWeight:
                                                               FontWeight.bold)),

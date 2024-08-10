@@ -1,23 +1,23 @@
 class EmployeeAttendanceModel {
-  String? status;
-  String? code;
-  String? message;
-  String? attandanceYear;
-  String? name;
-  String? employeeId;
-  String? department;
-  String? designation;
-  String? roasterCode;
-  String? roasterName;
-  String? dutyStartTime;
-  String? dutyEndTime;
-  String? roasterUpdateTime;
-  int? totalNumberOfDays;
-  int? totalNumberOfWeekend;
-  int? totalNumberOfHolyday;
-  int? totalNumberOfLeave;
-  int? totalNumberOfAbsent;
-  int? totalNumberOfPresent;
+  var status;
+  var code;
+  var message;
+  var attandanceYear;
+  var name;
+  var employeeId;
+  var department;
+  var designation;
+  var roasterCode;
+  var roasterName;
+  var dutyStartTime;
+  var dutyEndTime;
+  var roasterUpdateTime;
+  var totalNumberOfDays;
+  var totalNumberOfWeekend;
+  var totalNumberOfHolyday;
+  var totalNumberOfLeave;
+  var totalNumberOfAbsent;
+  var totalNumberOfPresent;
   List<Data>? data;
 
   EmployeeAttendanceModel(

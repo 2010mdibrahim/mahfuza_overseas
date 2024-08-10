@@ -44,7 +44,7 @@ class EmployeeAttendanceController extends GetxController {
     if(isNotSameWithPresentYear == false){
       loading.value = true;
     }else{
-    loading.value = false;
+    loading.value = true;
     }
     datesOfAttendanceHistory.clear();
     dateRemarkOfAttendanceHistory.clear();

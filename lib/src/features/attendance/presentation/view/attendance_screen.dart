@@ -9,7 +9,9 @@ class AttendanceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<EmployeeAttendanceController>(builder: (controller) {
+    return GetBuilder<EmployeeAttendanceController>(
+      init: EmployeeAttendanceController(),
+        builder: (controller) {
       return Scaffold(
         appBar: AppBar(
           title: Text("Attendance"),
