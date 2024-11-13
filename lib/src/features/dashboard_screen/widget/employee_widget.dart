@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:mahfuza_overseas/src/core/extensions/extensions.dart';
 import 'package:mahfuza_overseas/src/features/dashboard_screen/dashboard_controller.dart';
+import 'package:mahfuza_overseas/src/features/login_screen/ui/controller/login_controller.dart';
 
 import '../../../core/routes/route_name.dart';
 import '../../../core/routes/router.dart';
@@ -11,12 +13,12 @@ import '../../widgets/custom_text.dart';
 import '../dashboard_screen.dart';
 
 class EmployeeWidget extends StatelessWidget {
-  final DashboardController splashController;
+  final LoginController splashController;
   const EmployeeWidget({super.key, required this.splashController});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Obx(() => Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -32,7 +34,7 @@ class EmployeeWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
               horizontal: 5),
           child: Card(
-            child: splashController.loading.value
+            child: splashController.userInfoLoading.value
                 ? const Center(
               child:
               CircularProgressIndicator(),
@@ -296,6 +298,6 @@ class EmployeeWidget extends StatelessWidget {
         ),
 
       ],
-    );
+    ));
   }
 }

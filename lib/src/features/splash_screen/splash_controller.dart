@@ -8,13 +8,10 @@ import '../../core/di/app_component.dart';
 import '../../core/routes/route_name.dart';
 import '../../core/routes/router.dart';
 import '../../core/source/dio_client.dart';
-
-import '../login_screen/data/model/login_model.dart';
-import '../login_screen/domain/repository/login_repository.dart';
-import '../login_screen/domain/usecase/login_with_id_pass_usecase.dart';
+import '../login_screen/ui/controller/login_controller.dart';
 
 class SplashScreenController extends GetxController{
-
+var loginController = locator<LoginController>();
   @override
   void onInit() {
     checkApplicationInformation();
@@ -27,24 +24,16 @@ void checkApplicationInformation()async{
   AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
   final plugin = DeviceName();
   final deviceName = await plugin.getName();
+print("value are ${box.read("phoneNumber")} ${box.read("password")}");
 
-  print('Device name: ${deviceName ?? 'Unknown'}');
-  print('Running on model ${androidInfo.model}');
-  print('Running on id ${androidInfo.id}');
-  session.setDeviceId = androidInfo.id;
+  // session.setDeviceId = androidInfo.id;
   Future.delayed(const Duration(seconds: 3), () async {
-  if((session.getPhoneNumber?.isNotEmpty ?? false) && (session.getPassword?.isNotEmpty ?? false)){
-
-    RouteGenerator.pushNamedAndRemoveAll(
-        navigatorKey.currentContext!, Routes.dashboard);
+  if((box.read("phoneNumber") != null) && (box.read("password") != null) ){
+    loginController.submitLoginData(navigatorKey.currentContext!);
   }else{
       RouteGenerator.pushNamedAndRemoveAll(
           navigatorKey.currentContext!, Routes.loginScreen);
   }
   });
-
-
-
 }
-
 }

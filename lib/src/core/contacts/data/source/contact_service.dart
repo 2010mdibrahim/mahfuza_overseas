@@ -1,5 +1,6 @@
 
 import 'dart:convert';
+import '../../../../../main.dart';
 import '../../../../core/di/app_component.dart';
 import '../../../../core/network/configuration.dart';
 import '../../../../core/source/dio_client.dart';
@@ -10,7 +11,6 @@ import '../../ui/contact_controller/contact_controller.dart';
 import '../model/contact_model.dart';
 
 import 'package:dio/dio.dart' as dio;
-var session = locator<SessionManager>();
 
 class ContactService {
   final DioClient _dioClient = locator<DioClient>();
@@ -19,7 +19,7 @@ class ContactService {
     Response<ContactModel>? apiResponse;
     print(contactList);
     dio.FormData formData = dio.FormData.fromMap({
-      "candidate_id": session.getCandidateId,
+      "candidate_id": box.read("candidateId").toString(),
       "access_token": "7a6b8847409097e23a493bd1affdd9e30b52dfe9abc9fd781086dd52c088d4d3",
       "api_type": "candidate_contact_collection",
       "data_array": contactList

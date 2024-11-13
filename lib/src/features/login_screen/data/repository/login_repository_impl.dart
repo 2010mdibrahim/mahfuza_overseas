@@ -1,5 +1,6 @@
 import '../../../../core/source/model/api_response.dart';
 import '../../domain/repository/login_repository.dart';
+import '../model/agent_model.dart';
 import '../model/login_model.dart';
 import '../source/login_service.dart';
 
@@ -11,6 +12,13 @@ class SignInRepositoryImpl extends SignInRepository {
       {required String userName, required String password}) async {
     Response<LoginModel>? apiResponse;
     apiResponse = await loginService.loginWithIdPass(userName, password);
+    return apiResponse;
+  }
+  @override
+  Future<Response<AgentBalanceModel?>?> agentBalance(
+      {required String id}) async {
+    Response<AgentBalanceModel>? apiResponse;
+    apiResponse = await loginService.agentBalance(id);
     return apiResponse;
   }
 }

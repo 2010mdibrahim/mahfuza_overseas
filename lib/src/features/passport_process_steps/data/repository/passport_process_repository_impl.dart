@@ -7,9 +7,9 @@ class PassportRepositoryImpl extends PassportRepository {
   PassportRepositoryImpl(PassportService passportService) : super(passportService);
 
   @override
-  Future<Response<PassportProcessStepModel?>?> passportPass() async {
+  Future<Response<PassportProcessStepModel?>?> passportPass({String? candidateId}) async {
     Response<PassportProcessStepModel>? apiResponse;
-    apiResponse = await passportService.passportPass();
+    apiResponse = await passportService.passportPass(candidateId: candidateId);
     return apiResponse;
   }
 }

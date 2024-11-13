@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../main.dart';
 import '../../core/routes/route_name.dart';
 import '../../core/routes/router.dart';
 import '../../core/source/dio_client.dart';
@@ -28,14 +29,14 @@ class EmployeeDashboardDrawer extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(100),
                     child: CommonMethods.cachedNetworkImage(
-                      "${session.getPhoto}",
+                      "${box.read("photo").toString()}",
                       height: 100.0, // Adjust the height as needed
                       width: 100.0, // Adjust the width as needed
                     ),
                   ),
                 ),
                 SizedBox(height: 8),
-                Text("${session.getFullName}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),)
+                Text("${box.read("fullName").toString()}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),)
               ],
             ),
           ),//DrawerHeader
@@ -55,7 +56,7 @@ class EmployeeDashboardDrawer extends StatelessWidget {
             leading: const Icon(Icons.logout),
             title: const Text('LogOut'),
             onTap: () {
-              session.logout();
+              box.erase();
               RouteGenerator.pushNamedAndRemoveAll(context, Routes.loginScreen);
             },
           ),

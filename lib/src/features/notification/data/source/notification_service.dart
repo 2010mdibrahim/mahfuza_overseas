@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'package:mahfuza_overseas/src/features/login_screen/data/model/login_model.dart';
 
+import '../../../../../main.dart';
 import '../../../../core/contacts/data/model/contact_model.dart';
 import '../../../../core/di/app_component.dart';
 import '../../../../core/network/configuration.dart';
@@ -11,7 +12,6 @@ import '../../../../core/source/session_manager.dart';
 import '../../../../core/utilities/constants.dart';
 import '../model/notification_model.dart';
 import 'package:dio/dio.dart' as dio;
-var session = locator<SessionManager>();
 
 class NotificationService {
   final DioClient _dioClient = locator<DioClient>();
@@ -22,7 +22,7 @@ class NotificationService {
     dio.FormData formData = dio.FormData.fromMap({
       "access_token": "7a6b8847409097e23a493bd1affdd9e30b52dfe9abc9fd781086dd52c088d4d3",
       "api_type": "promotion_notification_data",
-      "candidate_id": session.getCandidateId
+      "candidate_id": box.read("candidateId").toString()
     });
    await _dioClient.post(
       path: '',
@@ -48,7 +48,7 @@ class NotificationService {
     dio.FormData formData = dio.FormData.fromMap({
       "access_token": "7a6b8847409097e23a493bd1affdd9e30b52dfe9abc9fd781086dd52c088d4d3",
       "api_type": "promotion_notification_data",
-      "candidate_id": session.getCandidateId,
+      "candidate_id": box.read("candidateId").toString(),
       "update_notification_id": updateNotificationId,
     });
    await _dioClient.post(

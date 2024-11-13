@@ -157,13 +157,13 @@ class CustomTextButton extends StatelessWidget {
           text,
           textAlign: TextAlign.center,
           style: TextStyle(
-              color: color ?? Theme.of(context).textTheme.headline1?.color,
+              color: color ?? Theme.of(context).textTheme.bodyLarge?.color,
               fontWeight: fontWeight ??
-                  Theme.of(context).textTheme.headline1?.fontWeight,
+                  Theme.of(context).textTheme.bodyLarge?.fontWeight,
               fontSize:
-                  fontSize ?? Theme.of(context).textTheme.headline1?.fontSize,
+                  fontSize ?? Theme.of(context).textTheme.bodyLarge?.fontSize,
               fontStyle: fontStyle ??
-                  Theme.of(context).textTheme.headline1?.fontStyle),
+                  Theme.of(context).textTheme.bodyLarge?.fontStyle),
         ),
       ),
     );

@@ -9,5 +9,5 @@ abstract class PassportRepository {
 
   PassportRepository(this.passportService);
 
-  Future<Response<PassportProcessStepModel?>?> passportPass();
+  Future<Response<PassportProcessStepModel?>?> passportPass({String? candidateId});
 }

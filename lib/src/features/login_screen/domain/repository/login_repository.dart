@@ -1,6 +1,7 @@
 
 
 import '../../../../core/source/model/api_response.dart';
+import '../../data/model/agent_model.dart';
 import '../../data/model/login_model.dart';
 import '../../data/source/login_service.dart';
 
@@ -11,4 +12,7 @@ abstract class SignInRepository {
 
   Future<Response<LoginModel?>?> loginWithIdPass(
       {required String userName, required String password});
+
+  Future<Response<AgentBalanceModel?>?> agentBalance(
+      {required String id});
 }

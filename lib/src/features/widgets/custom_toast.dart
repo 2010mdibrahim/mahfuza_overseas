@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mahfuza_overseas/src/core/network/configuration.dart';
 import 'package:photo_view/photo_view.dart';
+import '../../../main.dart';
 import '../../core/source/dio_client.dart';
 import '../../core/utilities/theme_config.dart';
 // import 'package:toast/toast.dart';
@@ -135,6 +136,6 @@ viewPhotoZoomable(BuildContext context, String imageUrl) {
   showDialog(
       context: context,
       builder: (context) => PhotoView(
-        imageProvider: CachedNetworkImageProvider((session.getBaseUrl ?? '') +  imageUrl),
+        imageProvider: CachedNetworkImageProvider((box.read("baseUrl").toString() ?? '') +  imageUrl),
       ));
 }

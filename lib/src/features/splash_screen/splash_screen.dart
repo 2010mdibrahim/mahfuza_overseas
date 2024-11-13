@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mahfuza_overseas/src/core/extensions/extensions.dart';
 import 'package:mahfuza_overseas/src/features/splash_screen/splash_controller.dart';
-import '../../core/routes/route_name.dart';
-import '../../core/routes/router.dart';
 import '../../core/utilities/assets_image.dart';
 import '../../core/utilities/theme_config.dart';
 
@@ -26,22 +24,35 @@ class _SplashScreenState extends State<SplashScreen> {
       init: SplashScreenController(),
       builder: (context) {
         return Scaffold(
-              body: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              body: Stack(
                 children: [
-                  Expanded(
-                    child: Center(
-                      child: Image.asset(AssetImagePath.mahfuzaLogo, height: 200, width: 200,),
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/background_image.jpg"),
+                        fit: BoxFit.cover,
+                      ),
                     ),
+                    child: Align(
+                           alignment: Alignment.bottomCenter,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: SizedBox(
+                                height: 30,
+                                width: 30,
+                                child: CircularProgressIndicator(backgroundColor: ThemeConfig.logoColor, valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),)),
+                          ),
+                        ),
+
                   ),
-                   Center(
-                    child: SizedBox(
-                        height: 30,
-                        width: 30,
-                        child: CircularProgressIndicator(backgroundColor: ThemeConfig.logoColor, valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),)),
-                  ),
-                  20.ph,
+                  Positioned(
+                    top: 220,
+                    left: 0,
+                    right: -30,
+                    child: Padding(
+                    padding: const EdgeInsets.only(bottom: 0),
+                    child: Center(child: Image.asset(AssetImagePath.mahfuzaLogo, height: 170, width: 170,)),
+                  ),)
                 ],
               ),
             );

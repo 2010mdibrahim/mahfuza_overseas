@@ -10,7 +10,6 @@ import '../../../../core/source/session_manager.dart';
 import '../../../../core/utilities/constants.dart';
 import '../model/employee_attendance_model.dart';
 import 'package:dio/dio.dart' as dio;
-var session = locator<SessionManager>();
 
 class EmployeeAttendanceService {
   final DioClient _dioClient = locator<DioClient>();

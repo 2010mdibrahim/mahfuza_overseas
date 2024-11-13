@@ -6,8 +6,10 @@ import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:mahfuza_overseas/src/core/extensions/extensions.dart';
 import 'package:mahfuza_overseas/src/features/dashboard_screen/dashboard_controller.dart';
+import 'package:mahfuza_overseas/src/features/dashboard_screen/widget/agent_widget.dart';
 import 'package:mahfuza_overseas/src/features/dashboard_screen/widget/candidate_widget.dart';
 import 'package:mahfuza_overseas/src/features/dashboard_screen/widget/employee_widget.dart';
+import 'package:mahfuza_overseas/src/features/login_screen/ui/controller/login_controller.dart';
 import 'package:mahfuza_overseas/src/features/promotion/ui/controller/promotion_controller.dart';
 import 'package:mahfuza_overseas/src/features/splash_screen/splash_controller.dart';
 import 'package:mahfuza_overseas/src/features/widgets/custom_text.dart';
@@ -21,6 +23,7 @@ import '../../core/utilities/assets_image.dart';
 import '../../core/utilities/common_methods.dart';
 import '../passport_process_steps/ui/controller/passport_process_step_controller.dart';
 import '../promotion/ui/promotion_widget/promotion_widget.dart';
+import 'agent_drawer.dart';
 import 'dashboard_drawer.dart';
 import 'employee_dashboard_drawer.dart';
 
@@ -32,8 +35,8 @@ class DashboardScreen extends StatelessWidget {
     return GetBuilder(
         init: ContactController(),
         builder: (contactController) {
-          return GetBuilder<DashboardController>(
-              init: DashboardController(),
+          return GetBuilder<LoginController>(
+              init: LoginController(),
               // initState: (d){
               //   d.controller?.userInformationFu();
               // },
@@ -52,18 +55,18 @@ class DashboardScreen extends StatelessWidget {
                                 elevation: 0,
                                 backgroundColor: Colors.white,
                               ),
-                              drawer: splashController.userInformation.value.type ==
-                                  "employee" ? EmployeeDashboardDrawer() : DashboardDrawer(),
+                              drawer: box.read("type") ==
+                                  "employee" ? EmployeeDashboardDrawer() : box.read("type") == "agent" ? AgentDrawer() :DashboardDrawer(),
                               body: SingleChildScrollView(
                                   child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  splashController.userInformation.value.type ==
+                                  box.read("type") ==
                                           "employee"
                                       ? EmployeeWidget(
                                           splashController: splashController)
-                                      : CandidateWidget(
+                                      : box.read("type") == "agent" ? AgentWidget(splashController: splashController) : CandidateWidget(
                                           splashController: splashController,
                                           passportProcessStepController:
                                               passportProcessStepController),

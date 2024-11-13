@@ -5,11 +5,18 @@ import 'package:mahfuza_overseas/src/core/contacts/ui/contact_controller/contact
 import 'package:mahfuza_overseas/src/features/dashboard_screen/dashboard_controller.dart';
 import 'package:mahfuza_overseas/src/features/passport_process_steps/ui/controller/passport_process_step_controller.dart';
 import 'package:mahfuza_overseas/src/features/splash_screen/splash_controller.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import '../../features/agent_transaction_list/data/repository/agent_transaction_list_repository_impl.dart';
+import '../../features/agent_transaction_list/data/source/agent_transaction_list_service.dart';
+import '../../features/agent_transaction_list/domain/repository/agent_transaction_list_repository.dart';
+import '../../features/agent_transaction_list/ui/controller/agent_transaction_list_controller.dart';
 import '../../features/attendance/data/repository/employee_attendance_repository_impl.dart';
 import '../../features/attendance/data/source/employee_attendance_service.dart';
 import '../../features/attendance/domain/repository/employee_attendance_repository.dart';
 import '../../features/attendance/presentation/controller/attendance_controller.dart';
+import '../../features/candidate_list/data/repository/candidate_list_repository_impl.dart';
+import '../../features/candidate_list/data/source/candidate_list_service.dart';
+import '../../features/candidate_list/domain/repository/candidate_list_repository.dart';
+import '../../features/candidate_list/ui/controller/candidate_list_controller.dart';
 import '../../features/candidate_service_info/data/repository/candidate_service_info_repository_impl.dart';
 import '../../features/candidate_service_info/data/source/candidate_service_info_service.dart';
 import '../../features/candidate_service_info/domain/repository/candidate_service_info_repository.dart';
@@ -45,7 +52,6 @@ Future<void> init() async {
   locator.registerFactory<DioClient>(() => DioClient(locator<Dio>()));
   //login
   locator.registerFactory<LoginController>(() => Get.put(LoginController()));
-  locator.registerFactory<DashboardController>(() => Get.put(DashboardController()));
   locator.registerFactory<SignInService>(() => SignInService());
   locator.registerFactory<SignInRepository>(
       () => SignInRepositoryImpl(locator<SignInService>()));
@@ -83,10 +89,19 @@ Future<void> init() async {
   locator.registerFactory<EmployeeAttendanceService>(() => EmployeeAttendanceService());
   locator.registerFactory<EmployeeAttendanceRepository>(
       () => EmployeeAttendanceRepositoryImpl(locator<EmployeeAttendanceService>()));
+  //candidate list
+  locator.registerFactory<CandidateListController>(() => Get.put(CandidateListController()));
+  locator.registerFactory<CandidateListModelService>(() => CandidateListModelService());
+  locator.registerFactory<CandidateListModelRepository>(
+      () => CandidateListRepositoryImpl(locator<CandidateListModelService>()));
+  //agent transaction list
+  locator.registerFactory<AgentTransactionListModelController>(() => Get.put(AgentTransactionListModelController()));
+  locator.registerFactory<AgentTransactionListModelService>(() => AgentTransactionListModelService());
+  locator.registerFactory<AgentTransactionListModelRepository>(
+      () => AgentTransactionListModelRepositoryImpl(locator<AgentTransactionListModelService>()));
 
 //splash screen controller
   locator.registerFactory<SplashScreenController>(() => Get.put(SplashScreenController()));
   //session
-  locator.registerSingletonAsync<SessionManager>(() async =>
-      SessionManager(PrefManager(await SharedPreferences.getInstance())));
+
 }

@@ -30,12 +30,12 @@ class CustomMultilineText extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
       textDirection: TextDirection.ltr,
       style: TextStyle(
-          color: color ?? Theme.of(context).textTheme.headline1?.color,
+          color: color ?? Theme.of(context).textTheme.bodyLarge?.color,
           fontWeight:
-              fontWeight ?? Theme.of(context).textTheme.headline1?.fontWeight,
-          fontSize: fontSize ?? Theme.of(context).textTheme.headline1?.fontSize,
+              fontWeight ?? Theme.of(context).textTheme.bodyLarge?.fontWeight,
+          fontSize: fontSize ?? Theme.of(context).textTheme.bodyLarge?.fontSize,
           fontStyle:
-              fontStyle ?? Theme.of(context).textTheme.headline1?.fontStyle),
+              fontStyle ?? Theme.of(context).textTheme.bodyLarge?.fontStyle),
     );
   }
 }
@@ -70,12 +70,12 @@ class CustomSimpleText extends StatelessWidget {
       textAlign: alignment ?? TextAlign.center,
       overflow: textOverFlow ?? TextOverflow.ellipsis,
       style: TextStyle(
-        color: color ?? Theme.of(context).textTheme.headline1?.color,
+        color: color ?? Theme.of(context).textTheme.bodyLarge?.color,
         fontWeight:
-            fontWeight ?? Theme.of(context).textTheme.headline1?.fontWeight,
+            fontWeight ?? Theme.of(context).textTheme.bodyLarge?.fontWeight,
         fontSize: fontSize ?? 20,
         fontStyle:
-            fontStyle ?? Theme.of(context).textTheme.headline1?.fontStyle,
+            fontStyle ?? Theme.of(context).textTheme.bodyLarge?.fontStyle,
 
         decoration: textDecoration,
       ),
@@ -109,10 +109,10 @@ class FieldTitleText extends StatelessWidget {
               ? ThemeConfig.white
               : color,
           fontWeight:
-              fontWeight ?? Theme.of(context).textTheme.headline1?.fontWeight,
+              fontWeight ?? Theme.of(context).textTheme.bodyLarge?.fontWeight,
           fontSize: fontSize ?? 18,
           fontStyle:
-              fontStyle ?? Theme.of(context).textTheme.headline1?.fontStyle),
+              fontStyle ?? Theme.of(context).textTheme.bodyLarge?.fontStyle),
     );
   }
 }

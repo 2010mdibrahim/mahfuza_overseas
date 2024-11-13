@@ -7,7 +7,8 @@ import 'package:mahfuza_overseas/src/features/passport_process_steps/ui/controll
 
 import '../../../../core/utilities/common_methods.dart';
 class PassportProcessingStepsScreen extends StatefulWidget {
-  const PassportProcessingStepsScreen({super.key});
+  final String candidateId;
+  const PassportProcessingStepsScreen({super.key, required this.candidateId});
 
   @override
   State<PassportProcessingStepsScreen> createState() => _PassportProcessingStepsScreenState();
@@ -18,8 +19,13 @@ class _PassportProcessingStepsScreenState extends State<PassportProcessingStepsS
 
   @override
   Widget build(BuildContext context) {
+
     return GetBuilder(
+
       init: PassportProcessStepController(),
+        initState: (passport){
+          passport.controller?.passportProcessStepFunction(candidateId: widget.candidateId);
+        },
       builder: (controller) {
         return Scaffold(
           appBar: AppBar(

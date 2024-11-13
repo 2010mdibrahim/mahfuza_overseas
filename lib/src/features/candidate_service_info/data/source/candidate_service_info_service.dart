@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'package:mahfuza_overseas/src/features/login_screen/data/model/login_model.dart';
 
+import '../../../../../main.dart';
 import '../../../../core/di/app_component.dart';
 import '../../../../core/network/configuration.dart';
 import '../../../../core/source/dio_client.dart';
@@ -10,7 +11,6 @@ import '../../../../core/source/session_manager.dart';
 import '../../../../core/utilities/constants.dart';
 import '../model/candidate_service_info_model.dart';
 import 'package:dio/dio.dart' as dio;
-var session = locator<SessionManager>();
 
 class CandidateServiceInfoService {
   final DioClient _dioClient = locator<DioClient>();
@@ -19,7 +19,7 @@ class CandidateServiceInfoService {
     Response<CandidateServiceInfoModel>? apiResponse;
 
     dio.FormData formData = dio.FormData.fromMap({
-      "phone_number": session.getPhoneNumber,
+      "phone_number": box.read("phoneNumber").toString(),
       "access_token": "7a6b8847409097e23a493bd1affdd9e30b52dfe9abc9fd781086dd52c088d4d3",
       "api_type": "candidate_service_info",
     });

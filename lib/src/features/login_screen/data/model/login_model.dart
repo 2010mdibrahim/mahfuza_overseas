@@ -22,14 +22,14 @@ class LoginModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    data['code'] = this.code;
-    data['message'] = this.message;
-    data['type'] = this.type;
-    if (this.candidate != null) {
-      data['candidate'] = this.candidate!.toJson();
+    data['status'] = status;
+    data['code'] = code;
+    data['message'] = message;
+    data['type'] = type;
+    if (candidate != null) {
+      data['candidate'] = candidate!.toJson();
     }
-    data['base_url'] = this.baseUrl;
+    data['base_url'] = baseUrl;
     return data;
   }
 }
@@ -166,6 +166,23 @@ class Candidate {
   // String? uploaderInfo;
   // String? data;
   // String? dateFilter;
+  String? accountHeadId;
+  String? accountHeadName;
+  String? openingBalance;
+
+  String? countryname;
+
+  String? companyId;
+  String? employeeName;
+  String? takeRegistrationFee;
+  String? registrationFeeAmount;
+  String? agentPhoto;
+
+  String? openingBalanceSheet;
+  String? address;
+  String? attachment;
+  String? showTransaction;
+
 
   Candidate(
       {this.id,
@@ -287,7 +304,21 @@ class Candidate {
         this.roasterName,
         this.roasterCode,
         this.weekenDayId,
-        this.weekenDayName});
+        this.weekenDayName,
+        this.accountHeadId,
+        this.accountHeadName,
+        this.openingBalance,
+        this.countryname,
+        this.companyId,
+        this.employeeName,
+        this.takeRegistrationFee,
+        this.registrationFeeAmount,
+        this.agentPhoto,
+        this.openingBalanceSheet,
+        this.address,
+        this.attachment,
+        this.showTransaction,
+      });
 
   Candidate.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -412,131 +443,219 @@ class Candidate {
     roasterCode = json['roaster_code'];
     weekenDayId = json['weeken_day_id'];
     weekenDayName = json['weeken_day_name'];
+
+
+
+
+
+    id = json['id'];
+    accountHeadId = json['account_head_id'];
+    accountHeadName = json['account_head_name'];
+    agentName = json['agent_name'];
+    phoneNumber = json['phone_number'];
+    email = json['email'];
+    password = json['password'];
+    openingBalance = json['opening_balance'];
+    dateOfBirth = json['date_of_birth'];
+    countryId = json['country_id'];
+    countryname = json['countryname'];
+    employeeId = json['employee_id'];
+    companyId = json['company_id'];
+    employeeName = json['employee_name'];
+    takeRegistrationFee = json['take_registration_fee'];
+    registrationFeeAmount = json['registration_fee_amount'];
+    agentPhoto = json['agent_photo'];
+    passportScanCopy = json['passport_scan_copy'];
+    openingBalanceSheet = json['opening_balance_sheet'];
+    divisionId = json['division_id'];
+    divisionName = json['division_name'];
+    districtId = json['district_id'];
+    districtName = json['district_name'];
+    thanaId = json['thana_id'];
+    thanaName = json['thana_name'];
+    postofficeId = json['postoffice_id'];
+    postofficeName = json['postoffice_name'];
+    postofficeCode = json['postoffice_code'];
+    stateId = json['state_id'];
+    stateName = json['state_name'];
+    permanentAddress = json['permanent_address'];
+    address = json['address'];
+    note = json['note'];
+    attachment = json['attachment'];
+    status = json['status'];
+    uploaderInfo = json['uploader_info'];
+    data = json['data'];
+    dateFilter = json['date_filter'];
+    showTransaction = json['show_transaction'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['candidate_type_id'] = this.candidateTypeId;
-    data['candidate_type'] = this.candidateType;
-    data['is_turiest'] = this.isTuriest;
-    data['agent_id'] = this.agentId;
-    data['agent_name'] = this.agentName;
-    data['interested_country_id'] = this.interestedCountryId;
-    data['interested_country_name'] = this.interestedCountryName;
-    data['interested_job_id'] = this.interestedJobId;
-    data['interested_job_name'] = this.interestedJobName;
-    data['process_country_id'] = this.processCountryId;
-    data['process_country_name'] = this.processCountryName;
-    data['process_job_id'] = this.processJobId;
-    data['process_job_name'] = this.processJobName;
-    data['nationality'] = this.nationality;
-    data['first_name'] = this.firstName;
-    data['last_name'] = this.lastName;
-    data['full_name'] = this.fullName;
-    data['gender'] = this.gender;
-    data['date_of_birth'] = this.dateOfBirth;
-    data['email'] = this.email;
-    data['phone_number'] = this.phoneNumber;
-    data['password'] = this.password;
-    data['contact_number'] = this.contactNumber;
-    data['nid_number'] = this.nidNumber;
-    data['father_name'] = this.fatherName;
-    data['mother_name'] = this.motherName;
-    data['spouse_name'] = this.spouseName;
-    data['nominee_name'] = this.nomineeName;
-    data['religion'] = this.religion;
-    data['marital_status'] = this.maritalStatus;
-    data['blood_group'] = this.bloodGroup;
-    data['nominee_relation'] = this.nomineeRelation;
-    data['note'] = this.note;
-    data['experiance_type'] = this.experianceType;
-    data['old_company_name'] = this.oldCompanyName;
-    data['old_job_id'] = this.oldJobId;
-    data['old_job_name'] = this.oldJobName;
-    data['departure_date'] = this.departureDate;
-    data['arrival_date'] = this.arrivalDate;
-    data['departure_seal'] = this.departureSeal;
-    data['arrival_seal'] = this.arrivalSeal;
-    data['old_company_address'] = this.oldCompanyAddress;
-    data['travelled_country_ids'] = this.travelledCountryIds;
-    data['passport_type'] = this.passportType;
-    data['passport_number'] = this.passportNumber;
-    data['passport_issue_date'] = this.passportIssueDate;
-    data['passport_expired_date'] = this.passportExpiredDate;
-    data['passport_issue_place'] = this.passportIssuePlace;
-    data['passport_issue_place_name'] = this.passportIssuePlaceName;
-    data['validity_year'] = this.validityYear;
-    data['passport_scan_copy'] = this.passportScanCopy;
-    data['passport_note'] = this.passportNote;
-    data['country_id'] = this.countryId;
-    data['country_name'] = this.countryName;
-    data['division_id'] = this.divisionId;
-    data['division_name'] = this.divisionName;
-    data['district_id'] = this.districtId;
-    data['district_name'] = this.districtName;
-    data['thana_id'] = this.thanaId;
-    data['thana_name'] = this.thanaName;
-    data['postoffice_id'] = this.postofficeId;
-    data['postoffice_name'] = this.postofficeName;
-    data['postoffice_code'] = this.postofficeCode;
-    data['state_id'] = this.stateId;
-    data['state_name'] = this.stateName;
-    data['current_address'] = this.currentAddress;
-    data['permanent_address'] = this.permanentAddress;
-    data['candidate_photo'] = this.candidatePhoto;
-    data['polication_verification_file'] = this.policationVerificationFile;
-    data['other_certification'] = this.otherCertification;
-    data['optional_files'] = this.optionalFiles;
-    data['comments'] = this.comments;
-    data['status'] = this.status;
-    data['visa_id'] = this.visaId;
-    data['sponsor_id'] = this.sponsorId;
-    data['sponsor_name'] = this.sponsorName;
-    data['is_start'] = this.isStart;
-    data['is_completaed'] = this.isCompletaed;
-    data['runing_step'] = this.runingStep;
-    data['total_step'] = this.totalStep;
-    data['is_dublicate'] = this.isDublicate;
-    data['terminated_note'] = this.terminatedNote;
-    data['terminated_attachment'] = this.terminatedAttachment;
-    data['uploader_info'] = this.uploaderInfo;
+    data['id'] = id;
+    data['candidate_type_id'] = candidateTypeId;
+    data['candidate_type'] = candidateType;
+    data['is_turiest'] = isTuriest;
+    data['agent_id'] = agentId;
+    data['agent_name'] = agentName;
+    data['interested_country_id'] = interestedCountryId;
+    data['interested_country_name'] = interestedCountryName;
+    data['interested_job_id'] = interestedJobId;
+    data['interested_job_name'] = interestedJobName;
+    data['process_country_id'] = processCountryId;
+    data['process_country_name'] = processCountryName;
+    data['process_job_id'] = processJobId;
+    data['process_job_name'] = processJobName;
+    data['nationality'] = nationality;
+    data['first_name'] = firstName;
+    data['last_name'] = lastName;
+    data['full_name'] = fullName;
+    data['gender'] = gender;
+    data['date_of_birth'] = dateOfBirth;
+    data['email'] = email;
+    data['phone_number'] = phoneNumber;
+    data['password'] = password;
+    data['contact_number'] = contactNumber;
+    data['nid_number'] = nidNumber;
+    data['father_name'] = fatherName;
+    data['mother_name'] = motherName;
+    data['spouse_name'] = spouseName;
+    data['nominee_name'] = nomineeName;
+    data['religion'] = religion;
+    data['marital_status'] = maritalStatus;
+    data['blood_group'] = bloodGroup;
+    data['nominee_relation'] = nomineeRelation;
+    data['note'] = note;
+    data['experiance_type'] = experianceType;
+    data['old_company_name'] = oldCompanyName;
+    data['old_job_id'] = oldJobId;
+    data['old_job_name'] = oldJobName;
+    data['departure_date'] = departureDate;
+    data['arrival_date'] = arrivalDate;
+    data['departure_seal'] = departureSeal;
+    data['arrival_seal'] = arrivalSeal;
+    data['old_company_address'] = oldCompanyAddress;
+    data['travelled_country_ids'] = travelledCountryIds;
+    data['passport_type'] = passportType;
+    data['passport_number'] = passportNumber;
+    data['passport_issue_date'] = passportIssueDate;
+    data['passport_expired_date'] = passportExpiredDate;
+    data['passport_issue_place'] = passportIssuePlace;
+    data['passport_issue_place_name'] = passportIssuePlaceName;
+    data['validity_year'] = validityYear;
+    data['passport_scan_copy'] = passportScanCopy;
+    data['passport_note'] = passportNote;
+    data['country_id'] = countryId;
+    data['country_name'] = countryName;
+    data['division_id'] = divisionId;
+    data['division_name'] = divisionName;
+    data['district_id'] = districtId;
+    data['district_name'] = districtName;
+    data['thana_id'] = thanaId;
+    data['thana_name'] = thanaName;
+    data['postoffice_id'] = postofficeId;
+    data['postoffice_name'] = postofficeName;
+    data['postoffice_code'] = postofficeCode;
+    data['state_id'] = stateId;
+    data['state_name'] = stateName;
+    data['current_address'] = currentAddress;
+    data['permanent_address'] = permanentAddress;
+    data['candidate_photo'] = candidatePhoto;
+    data['polication_verification_file'] = policationVerificationFile;
+    data['other_certification'] = otherCertification;
+    data['optional_files'] = optionalFiles;
+    data['comments'] = comments;
+    data['status'] = status;
+    data['visa_id'] = visaId;
+    data['sponsor_id'] = sponsorId;
+    data['sponsor_name'] = sponsorName;
+    data['is_start'] = isStart;
+    data['is_completaed'] = isCompletaed;
+    data['runing_step'] = runingStep;
+    data['total_step'] = totalStep;
+    data['is_dublicate'] = isDublicate;
+    data['terminated_note'] = terminatedNote;
+    data['terminated_attachment'] = terminatedAttachment;
+    data['uploader_info'] = uploaderInfo;
     data['data'] = this.data;
-    data['date_filter'] = this.dateFilter;
-    data['f_name'] = this.fName;
-    data['l_name'] = this.lName;
-    data['date_of_joining'] = this.dateOfJoining;
-    data['personal_Phone'] = this.personalPhone;
-    data['contact_person_number'] = this.contactPersonNumber;
-    data['avater_photo'] = this.avaterPhoto;
-    data['company_phone'] = this.companyPhone;
-    data['company_email'] = this.companyEmail;
-    data['nid_number'] = this.nidNumber;
-    data['branch_id'] = this.branchId;
-    data['branch_name'] = this.branchName;
-    data['branch_code'] = this.branchCode;
-    data['employee_id'] = this.employeeId;
-    data['role_id'] = this.roleId;
-    data['role_name'] = this.roleName;
-    data['role_code'] = this.roleCode;
-    data['department_id'] = this.departmentId;
-    data['department_name'] = this.departmentName;
-    data['department_code'] = this.departmentCode;
-    data['designation_id'] = this.designationId;
-    data['designation_name'] = this.designationName;
-    data['designation_code'] = this.designationCode;
-    data['basic_salary_monthly'] = this.basicSalaryMonthly;
-    data['basic_salary_daily'] = this.basicSalaryDaily;
-    data['mobile_allowance'] = this.mobileAllowance;
-    data['salary_pay_method'] = this.salaryPayMethod;
-    data['contruct_type'] = this.contructType;
-    data['access_card'] = this.accessCard;
-    data['white_list'] = this.whiteList;
-    data['roaster_id'] = this.roasterId;
-    data['roaster_name'] = this.roasterName;
-    data['roaster_code'] = this.roasterCode;
-    data['weeken_day_id'] = this.weekenDayId;
-    data['weeken_day_name'] = this.weekenDayName;
+    data['date_filter'] = dateFilter;
+    data['f_name'] = fName;
+    data['l_name'] = lName;
+    data['date_of_joining'] = dateOfJoining;
+    data['personal_Phone'] = personalPhone;
+    data['contact_person_number'] = contactPersonNumber;
+    data['avater_photo'] = avaterPhoto;
+    data['company_phone'] = companyPhone;
+    data['company_email'] = companyEmail;
+    data['nid_number'] = nidNumber;
+    data['branch_id'] = branchId;
+    data['branch_name'] = branchName;
+    data['branch_code'] = branchCode;
+    data['employee_id'] = employeeId;
+    data['role_id'] = roleId;
+    data['role_name'] = roleName;
+    data['role_code'] = roleCode;
+    data['department_id'] = departmentId;
+    data['department_name'] = departmentName;
+    data['department_code'] = departmentCode;
+    data['designation_id'] = designationId;
+    data['designation_name'] = designationName;
+    data['designation_code'] = designationCode;
+    data['basic_salary_monthly'] = basicSalaryMonthly;
+    data['basic_salary_daily'] = basicSalaryDaily;
+    data['mobile_allowance'] = mobileAllowance;
+    data['salary_pay_method'] = salaryPayMethod;
+    data['contruct_type'] = contructType;
+    data['access_card'] = accessCard;
+    data['white_list'] = whiteList;
+    data['roaster_id'] = roasterId;
+    data['roaster_name'] = roasterName;
+    data['roaster_code'] = roasterCode;
+    data['weeken_day_id'] = weekenDayId;
+    data['weeken_day_name'] = weekenDayName;
+
+
+
+
+    data['id'] = id;
+    data['account_head_id'] = accountHeadId;
+    data['account_head_name'] = accountHeadName;
+    data['agent_name'] = agentName;
+    data['phone_number'] = phoneNumber;
+    data['email'] = email;
+    data['password'] = password;
+    data['opening_balance'] = openingBalance;
+    data['date_of_birth'] = dateOfBirth;
+    data['country_id'] = countryId;
+    data['countryname'] = countryname;
+    data['employee_id'] = employeeId;
+    data['company_id'] = companyId;
+    data['employee_name'] = employeeName;
+    data['take_registration_fee'] = takeRegistrationFee;
+    data['registration_fee_amount'] = registrationFeeAmount;
+    data['agent_photo'] = agentPhoto;
+    data['passport_scan_copy'] = passportScanCopy;
+    data['opening_balance_sheet'] = openingBalanceSheet;
+    data['division_id'] = divisionId;
+    data['division_name'] = divisionName;
+    data['district_id'] = districtId;
+    data['district_name'] = districtName;
+    data['thana_id'] = thanaId;
+    data['thana_name'] = thanaName;
+    data['postoffice_id'] = postofficeId;
+    data['postoffice_name'] = postofficeName;
+    data['postoffice_code'] = postofficeCode;
+    data['state_id'] = stateId;
+    data['state_name'] = stateName;
+    data['permanent_address'] = permanentAddress;
+    data['address'] = address;
+    data['note'] = note;
+    data['attachment'] = attachment;
+    data['status'] = status;
+    data['uploader_info'] = uploaderInfo;
+    data['data'] = this.data;
+    data['date_filter'] = dateFilter;
+    data['show_transaction'] = showTransaction;
+
     return data;
   }
 }

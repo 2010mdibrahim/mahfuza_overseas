@@ -9,7 +9,7 @@ import '../network/configuration.dart';
 import '../utilities/common_methods.dart';
 import '../utilities/constants.dart';
 import '../utilities/theme_config.dart';
-var session = locator<SessionManager>();
+
 class DioClient {
   final Dio dio;
 
@@ -36,6 +36,7 @@ class DioClient {
             receiveTimeout: const Duration(milliseconds: 30000),
           ),
         );
+        print("response body ${response}");
     // var csrftoken = response.headers.remove('set-cookie').substring(10, 74);
         if (response.data != null) {
           logger.i("dio response $response");

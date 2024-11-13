@@ -8,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'dart:ui' as ui;
 
+import '../../../main.dart';
 import '../network/configuration.dart';
 import 'assets_image.dart';
 class CommonMethods{
@@ -23,7 +24,7 @@ class CommonMethods{
   }
   static cachedNetworkImage(String url, {double? height, double? width, BoxFit? fit}){
   return  CachedNetworkImage(
-      imageUrl: "${session.getBaseUrl}$url",
+      imageUrl: "${box.read("baseUrl")}$url",
       height: height,
       width: width,
       fit: fit ?? BoxFit.cover,

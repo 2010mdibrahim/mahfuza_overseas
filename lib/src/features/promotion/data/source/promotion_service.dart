@@ -10,7 +10,6 @@ import '../../../../core/source/session_manager.dart';
 import '../../../../core/utilities/constants.dart';
 import '../model/promotion_model.dart';
 import 'package:dio/dio.dart' as dio;
-var session = locator<SessionManager>();
 
 class PromotionService {
   final DioClient _dioClient = locator<DioClient>();

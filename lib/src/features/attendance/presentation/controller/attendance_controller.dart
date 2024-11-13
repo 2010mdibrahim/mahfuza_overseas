@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:mahfuza_overseas/src/core/contacts/data/source/contact_service.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../../../../main.dart';
 import '../../../../core/di/app_component.dart';
 import '../../data/model/employee_attendance_model.dart';
 import '../../domain/repository/employee_attendance_repository.dart';
@@ -48,12 +49,11 @@ class EmployeeAttendanceController extends GetxController {
     }
     datesOfAttendanceHistory.clear();
     dateRemarkOfAttendanceHistory.clear();
-    print("this is employee id ${session.getCandidateId} ${selectedDate.value}");
     update();
     try {
       EmployeeAttendancePassUseCase employeeAttendancePassUseCase =
       EmployeeAttendancePassUseCase(locator<EmployeeAttendanceRepository>());
-      var response = await employeeAttendancePassUseCase(employeeId: session.getCandidateId.toString(), year: isNotSameWithPresentYear == false ? selectedDate.value.year.toString() : DateTime.now().year.toString());
+      var response = await employeeAttendancePassUseCase(employeeId: box.read("candidateId").toString(), year: isNotSameWithPresentYear == false ? selectedDate.value.year.toString() : DateTime.now().year.toString());
       employeeAttendanceModel.value = response!.data!;
       if(isNotSameWithPresentYear == false){
         attendanceYear.value = selectedDate.value.year.toString();

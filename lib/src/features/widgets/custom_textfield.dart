@@ -38,7 +38,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       enabled: enabled ?? true,
-      keyboardType: textInputType,
+      keyboardType: textInputType ?? TextInputType.text,
       textInputAction: textInputAction,
       controller: controller,
       validator: validator,
@@ -60,17 +60,19 @@ class CustomTextField extends StatelessWidget {
         border: InputBorder.none,
         prefixIcon: prefixIconPadding == false ? Text('') : prefixIcon,
         suffixIcon: suffixIcon,
+        fillColor: Colors.white.withOpacity(0.7),
+        filled: true,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5.0),
           borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.white,
             width: 1.0,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5.0),
           borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.white,
             width: 1.0,
           ),
         ),

@@ -4,12 +4,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:mahfuza_overseas/src/core/di/app_component.dart';
 import 'package:mahfuza_overseas/src/core/notification/notifications.dart';
 import 'package:mahfuza_overseas/src/core/routes/router.dart';
 import 'package:mahfuza_overseas/src/core/utilities/theme_config.dart';
 import 'firebase_options.dart';
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 @pragma('vm:entry-point')
 // function to lisen to background changes
 Future _firebaseBackgroundMessage(RemoteMessage message) async {
@@ -37,6 +39,7 @@ void showNotification({required String title, required String body}) {
 }
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -88,7 +91,7 @@ void main() async {
   await init();
   runApp(const MainPage());
 }
-
+final box = GetStorage();
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 

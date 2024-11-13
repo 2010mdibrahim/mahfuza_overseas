@@ -27,11 +27,18 @@ class LoginScreen extends StatelessWidget {
             builder: (controller) {
               return Scaffold(
                 backgroundColor: ThemeConfig.white,
+
                 body: SafeArea(
                   child: SingleChildScrollView(
                     child: Container(
-                      color: Colors.transparent,
                       height: MediaQuery.of(context).size.height,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        image: DecorationImage(
+                          image: AssetImage("assets/background_image.jpg"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                       child:  Column(
                         children: [
                           20.ph,
@@ -93,7 +100,6 @@ class LoginScreen extends StatelessWidget {
                                       margin: const EdgeInsets.symmetric(
                                           horizontal: 10),
                                       child: CustomTextField(
-                                        textInputType: TextInputType.number,
                                         controller: controller
                                             .passwordTextFieldController,
                                         onChanged: (s) {

@@ -23,26 +23,36 @@ class PassportProcessStepController extends GetxController {
   ];
   var currentStep = 0.obs;
   var loading = false.obs;
-  // @override
-  // void onInit() {
-  //   if(userModel.type != "employee"){
-  //   passportProcessStepFunction();
-  //   }
-  //   super.onInit();
-  // }
 
-  void passportProcessStepFunction() async {
+  void passportProcessStepFunction({String? candidateId}) async {
     loading.value = true;
+    print("Candidate ID: $candidateId");
     update();
-    if(userModel.type != "employee"){
+
+    // Check if the user type is not "employee" or is "agent"
+    if (userModel.type != "employee" || userModel.type == "agent") {
       try {
-        PassportPassUseCase passportPassUseCase =
-        PassportPassUseCase(locator<PassportRepository>());
-        var response = await passportPassUseCase();
+        PassportPassUseCase passportPassUseCase = PassportPassUseCase(locator<PassportRepository>());
+        var response = await passportPassUseCase(candidateId: candidateId);
+        // Assigning response data to passportProcessStepsList
         passportProcessStepsList.value = response!.data!;
-        for(var i in passportProcessStepsList.value.processList!){
-          var record = passportProcessStepsList.value.processRecord!.firstWhere((r) => r.stepId == i.id, orElse: () => passportProcessStepsList.value.processRecord![0]);
-          if (record.stepId == i.id) {
+        // Clearing the steps list to avoid duplicates on subsequent calls
+        steps.clear();
+        // Iterate over each process step
+        for (var i in passportProcessStepsList.value.processList!) {
+          // Check if processRecord is not null and not empty
+          var record;
+          if (passportProcessStepsList.value.processRecord != null &&
+              passportProcessStepsList.value.processRecord!.isNotEmpty) {
+            // Find record with matching stepId or fallback to first element
+            record = passportProcessStepsList.value.processRecord!.firstWhere(
+                  (r) => r.stepId == i.id,
+              orElse: () => passportProcessStepsList.value.processRecord!.first,
+            );
+          }
+
+          // Add a new step if it does not exist already
+          if (record != null && record.stepId == i.id) {
             if (!steps.any((step) => step.id == i.id)) {
               steps.add(Step(i.id, i.processName, record));
             }
@@ -52,10 +62,10 @@ class PassportProcessStepController extends GetxController {
             }
           }
         }
-
       } on PlatformException catch (e) {
-        String platformVersion = '${e.message}';
-        print(platformVersion);
+        print("Platform Exception: ${e.message}");
+      } catch (e) {
+        print("Error: $e");
       } finally {
         loading.value = false;
         update();
